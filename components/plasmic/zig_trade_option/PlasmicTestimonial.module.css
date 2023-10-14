@@ -1,0 +1,120 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: var(--token-gKBhMi_ROKEp);
+  position: relative;
+  min-width: 0;
+  border-radius: 4px;
+  padding: var(--token-PSdATFFpH6qC) var(--token-X-GPb6jNlyyS);
+}
+.text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--token-oCBrbCj-DOXP);
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+.freeBox__g1RA {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.freeBox__bcsR {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  padding-top: var(--token-HORj6LCotodD);
+  min-width: 0;
+}
+.freeBox__bcsR > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  margin-left: calc(0px - var(--token-HORj6LCotodD));
+  width: calc(100% + var(--token-HORj6LCotodD));
+}
+.freeBox__bcsR > :global(.__wab_flex-container) > *,
+.freeBox__bcsR > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox__bcsR > :global(.__wab_flex-container) > picture > img,
+.freeBox__bcsR
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: var(--token-HORj6LCotodD);
+}
+.freeBox__vIi {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 100%;
+}
+.img__vt3X1 {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  height: var(--token-PSdATFFpH6qC);
+  width: var(--token-PSdATFFpH6qC);
+  object-position: 50% 10%;
+  flex-shrink: 0;
+  border-radius: 100%;
+}
+.img__vt3X1 > picture > img {
+  object-fit: cover;
+  object-position: 50% 10%;
+}
+.img__vt3X1 > :global(.__wab_img-spacer) > img {
+  object-fit: cover;
+  object-position: 50% 10%;
+}
+.freeBox___0AjnP {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+.freeBox__fRTfE {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.freeBox__hyWfo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.slotTargetSlot3 {
+  font-size: 14px;
+}
