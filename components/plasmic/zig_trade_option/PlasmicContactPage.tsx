@@ -190,50 +190,6 @@ function PlasmicContactPage__RenderFunc(props: {
                   }
                   slot3={"Email Us"}
                 />
-
-                <Contact
-                  className={classNames("__wab_instance", sty.contact___1RRzD)}
-                  slot={"Visit our office HQ."}
-                  slot2={
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__hOhtg
-                      )}
-                    >
-                      {"3869 Kingsbury Dr\nMarion Station, Maryland(MD), 21838"}
-                    </div>
-                  }
-                  slot3={"Visit Us"}
-                />
-
-                <Contact
-                  className={classNames("__wab_instance", sty.contact__fu3Uu)}
-                  slot={"Mon-Fri from 8am to 4pm."}
-                  slot2={
-                    <p.PlasmicLink
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.a,
-                        projectcss.__wab_text,
-                        sty.link__jAnAs
-                      )}
-                      component={Link}
-                      href={"tel:(123)456-7890"}
-                      platform={"nextjs"}
-                    >
-                      {"(123) 456-7890"}
-                    </p.PlasmicLink>
-                  }
-                >
-                  <Icon13Icon
-                    data-plasmic-name={"svg"}
-                    data-plasmic-override={overrides.svg}
-                    className={classNames(projectcss.all, sty.svg)}
-                    role={"img"}
-                  />
-                </Contact>
               </p.Stack>
             </div>
           </section>
