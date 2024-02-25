@@ -322,32 +322,7 @@ function PlasmicFooter__RenderFunc(props: {
               </Button>
             </p.Stack>
           </div>
-          <div className={classNames(projectcss.all, sty.column__px5Av)}>
-            <p.Stack
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___9OmvD)}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__w9Zq
-                )}
-              >
-                {"Address"}
-              </div>
-            </p.Stack>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__tbqLi
-              )}
-            >
-              {"3869 Kingsbury Dr\nMarion Station, Maryland(MD), 21838"}
-            </div>
-          </div>
+         
         </p.Stack>
         <div
           className={classNames(
