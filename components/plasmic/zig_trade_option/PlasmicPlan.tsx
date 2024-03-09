@@ -19,25 +19,48 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-import * as p from "@plasmicapp/react-web";
-import * as ph from "@plasmicapp/host";
-
 import {
-  hasVariant,
-  classNames,
-  wrapWithClassName,
-  createPlasmicElementProxy,
-  makeFragment,
+  Flex as Flex__,
   MultiChoiceArg,
+  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
+  PlasmicIcon as PlasmicIcon__,
+  PlasmicImg as PlasmicImg__,
+  PlasmicLink as PlasmicLink__,
+  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  pick,
-  omit,
-  useTrigger,
+  Stack as Stack__,
   StrictProps,
+  Trans as Trans__,
+  classNames,
+  createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
+  generateOnMutateForSpec,
+  generateStateOnChangeProp,
+  generateStateOnChangePropForCodeComponents,
+  generateStateValueProp,
+  get as $stateGet,
+  hasVariant,
+  initializeCodeComponentStates,
+  initializePlasmicStates,
+  makeFragment,
+  omit,
+  pick,
+  renderPlasmicSlot,
+  set as $stateSet,
+  useCurrentUser,
+  useDollarState,
+  usePlasmicTranslator,
+  useTrigger,
+  wrapWithClassName
 } from "@plasmicapp/react-web";
+import {
+  DataCtxReader as DataCtxReader__,
+  useDataEnv,
+  useGlobalActions
+} from "@plasmicapp/host";
+
 import Button from "../../Button"; // plasmic-import: O1n4fOqLki7Y/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -78,7 +101,7 @@ export const PlasmicPlan__ArgProps = new Array<ArgPropType>(
 );
 
 export type PlasmicPlan__OverridesType = {
-  root?: p.Flex<"div">;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultPlanProps {
@@ -118,11 +141,11 @@ function PlasmicPlan__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = ph.useDataEnv?.() || {};
+  const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = p.useCurrentUser?.() || {};
+  const currentUser = useCurrentUser?.() || {};
 
   return (
     <div
@@ -140,13 +163,13 @@ function PlasmicPlan__RenderFunc(props: {
       )}
     >
       <div className={classNames(projectcss.all, sty.freeBox__qdVi4)}>
-        {p.renderPlasmicSlot({
+        {renderPlasmicSlot({
           defaultContents: "Starter Pack",
           value: args.children,
           className: classNames(sty.slotTargetChildren)
         })}
       </div>
-      <p.Stack
+      <Stack__
         as={"div"}
         hasGap={true}
         className={classNames(projectcss.all, sty.freeBox__vvpQb)}
@@ -162,7 +185,7 @@ function PlasmicPlan__RenderFunc(props: {
             {"Minimum"}
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__pUazm)}>
-            {p.renderPlasmicSlot({
+            {renderPlasmicSlot({
               defaultContents: "$500",
               value: args.slot3,
               className: classNames(sty.slotTargetSlot3)
@@ -180,7 +203,7 @@ function PlasmicPlan__RenderFunc(props: {
             {"Maximum"}
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__a8FvX)}>
-            {p.renderPlasmicSlot({
+            {renderPlasmicSlot({
               defaultContents: "$500",
               value: args.slot6,
               className: classNames(sty.slotTargetSlot6)
@@ -200,7 +223,7 @@ function PlasmicPlan__RenderFunc(props: {
           <div className={classNames(projectcss.all, sty.freeBox__a5Tz1)}>
             <div className={classNames(projectcss.all, sty.freeBox__drYdf)}>
               <div className={classNames(projectcss.all, sty.freeBox__sef4S)}>
-                {p.renderPlasmicSlot({
+                {renderPlasmicSlot({
                   defaultContents: "10%",
                   value: args.slot2,
                   className: classNames(sty.slotTargetSlot2)
@@ -221,12 +244,12 @@ function PlasmicPlan__RenderFunc(props: {
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__ef1F6)}>
             <div className={classNames(projectcss.all, sty.freeBox__kiK5F)}>
-              <p.Stack
+              <Stack__
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox__eXkbT)}
               >
-                {p.renderPlasmicSlot({
+                {renderPlasmicSlot({
                   defaultContents: "5%",
                   value: args.slot7,
                   className: classNames(sty.slotTargetSlot7)
@@ -240,7 +263,7 @@ function PlasmicPlan__RenderFunc(props: {
                 >
                   {"days"}
                 </div>
-              </p.Stack>
+              </Stack__>
             </div>
           </div>
         </div>
@@ -257,7 +280,7 @@ function PlasmicPlan__RenderFunc(props: {
           <div className={classNames(projectcss.all, sty.freeBox__yePhf)}>
             <div className={classNames(projectcss.all, sty.freeBox__dwX0U)}>
               <div className={classNames(projectcss.all, sty.freeBox__lsGrq)}>
-                {p.renderPlasmicSlot({
+                {renderPlasmicSlot({
                   defaultContents: "5%",
                   value: args.slot5,
                   className: classNames(sty.slotTargetSlot5)
@@ -266,16 +289,16 @@ function PlasmicPlan__RenderFunc(props: {
             </div>
           </div>
         </div>
-      </p.Stack>
+      </Stack__>
       <div className={classNames(projectcss.all, sty.freeBox___5FNtZ)}>
-        {p.renderPlasmicSlot({
+        {renderPlasmicSlot({
           defaultContents: "Daily Withdrawal",
           value: args.slot,
           className: classNames(sty.slotTargetSlot)
         })}
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__hDgri)}>
-        {p.renderPlasmicSlot({
+        {renderPlasmicSlot({
           defaultContents: (
             <Button
               className={classNames("__wab_instance", sty.button___96Kvx)}
@@ -296,7 +319,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  typeof PlasmicDescendants[T][number];
+  (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
 };
@@ -335,7 +358,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicPlan__ArgProps,
           internalVariantPropNames: PlasmicPlan__VariantProps
         }),

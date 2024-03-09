@@ -19,25 +19,47 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-import * as p from "@plasmicapp/react-web";
-import * as ph from "@plasmicapp/host";
-
 import {
-  hasVariant,
-  classNames,
-  wrapWithClassName,
-  createPlasmicElementProxy,
-  makeFragment,
+  Flex as Flex__,
   MultiChoiceArg,
+  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
+  PlasmicIcon as PlasmicIcon__,
+  PlasmicImg as PlasmicImg__,
+  PlasmicLink as PlasmicLink__,
+  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  pick,
-  omit,
-  useTrigger,
+  Stack as Stack__,
   StrictProps,
+  Trans as Trans__,
+  classNames,
+  createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
+  generateOnMutateForSpec,
+  generateStateOnChangeProp,
+  generateStateOnChangePropForCodeComponents,
+  generateStateValueProp,
+  get as $stateGet,
+  hasVariant,
+  initializeCodeComponentStates,
+  initializePlasmicStates,
+  makeFragment,
+  omit,
+  pick,
+  renderPlasmicSlot,
+  set as $stateSet,
+  useCurrentUser,
+  useDollarState,
+  usePlasmicTranslator,
+  useTrigger,
+  wrapWithClassName
 } from "@plasmicapp/react-web";
+import {
+  DataCtxReader as DataCtxReader__,
+  useDataEnv,
+  useGlobalActions
+} from "@plasmicapp/host";
 
 import { useScreenVariants as useScreenVariantsvUzx0AI3UQDj } from "./PlasmicGlobalVariant__Mobile"; // plasmic-import: vUZX0aI3uQDj/globalVariant
 
@@ -58,8 +80,8 @@ type ArgPropType = keyof PlasmicAbout__ArgsType;
 export const PlasmicAbout__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAbout__OverridesType = {
-  root?: p.Flex<"div">;
-  section?: p.Flex<"section">;
+  root?: Flex__<"div">;
+  section?: Flex__<"section">;
 };
 
 export interface DefaultAboutProps {}
@@ -89,11 +111,11 @@ function PlasmicAbout__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = ph.useDataEnv?.() || {};
+  const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = p.useCurrentUser?.() || {};
+  const currentUser = useCurrentUser?.() || {};
 
   const globalVariants = ensureGlobalVariants({
     mobile: useScreenVariantsvUzx0AI3UQDj()
@@ -143,7 +165,7 @@ function PlasmicAbout__RenderFunc(props: {
             className={classNames(projectcss.all, sty.section)}
             id={"about"}
           >
-            <p.Stack
+            <Stack__
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__cXni1)}
@@ -159,12 +181,12 @@ function PlasmicAbout__RenderFunc(props: {
                   {"About Us"}
                 </div>
               </div>
-              <p.Stack
+              <Stack__
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox__xivQe)}
               >
-                <p.Stack
+                <Stack__
                   as={"div"}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox__suRb4)}
@@ -189,8 +211,8 @@ function PlasmicAbout__RenderFunc(props: {
                       "Welcome to Zig Trade Option, where we envision a world where financial possibilities are illuminated for everyone. Our journey began with the belief that every individual deserves a chance to achieve their financial dreams. We are here to guide you through the complexities of investment, ensuring that your path is bright, clear, and full of potential."
                     }
                   </div>
-                </p.Stack>
-                <p.Stack
+                </Stack__>
+                <Stack__
                   as={"div"}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox__ipjJn)}
@@ -215,7 +237,7 @@ function PlasmicAbout__RenderFunc(props: {
                       "Our mission is simple yet profound: to empower you with intelligent investment choices that lead to financial freedom. We believe that by providing expert insights and innovative strategies, we can help you navigate the ever-changing landscape of finance and create a future that's as vibrant as our name suggests."
                     }
                   </div>
-                </p.Stack>
+                </Stack__>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -225,8 +247,8 @@ function PlasmicAbout__RenderFunc(props: {
                 >
                   {"Invest with Clarity. Choose Zig Trade Option."}
                 </div>
-              </p.Stack>
-            </p.Stack>
+              </Stack__>
+            </Stack__>
           </section>
         </div>
       </div>
@@ -240,7 +262,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  typeof PlasmicDescendants[T][number];
+  (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
   section: "section";
@@ -280,7 +302,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicAbout__ArgProps,
           internalVariantPropNames: PlasmicAbout__VariantProps
         }),

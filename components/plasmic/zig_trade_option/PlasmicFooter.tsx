@@ -19,25 +19,48 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-import * as p from "@plasmicapp/react-web";
-import * as ph from "@plasmicapp/host";
-
 import {
-  hasVariant,
-  classNames,
-  wrapWithClassName,
-  createPlasmicElementProxy,
-  makeFragment,
+  Flex as Flex__,
   MultiChoiceArg,
+  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
+  PlasmicIcon as PlasmicIcon__,
+  PlasmicImg as PlasmicImg__,
+  PlasmicLink as PlasmicLink__,
+  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  pick,
-  omit,
-  useTrigger,
+  Stack as Stack__,
   StrictProps,
+  Trans as Trans__,
+  classNames,
+  createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
+  generateOnMutateForSpec,
+  generateStateOnChangeProp,
+  generateStateOnChangePropForCodeComponents,
+  generateStateValueProp,
+  get as $stateGet,
+  hasVariant,
+  initializeCodeComponentStates,
+  initializePlasmicStates,
+  makeFragment,
+  omit,
+  pick,
+  renderPlasmicSlot,
+  set as $stateSet,
+  useCurrentUser,
+  useDollarState,
+  usePlasmicTranslator,
+  useTrigger,
+  wrapWithClassName
 } from "@plasmicapp/react-web";
+import {
+  DataCtxReader as DataCtxReader__,
+  useDataEnv,
+  useGlobalActions
+} from "@plasmicapp/host";
+
 import Button from "../../Button"; // plasmic-import: O1n4fOqLki7Y/component
 
 import { useScreenVariants as useScreenVariantsvUzx0AI3UQDj } from "./PlasmicGlobalVariant__Mobile"; // plasmic-import: vUZX0aI3uQDj/globalVariant
@@ -62,9 +85,9 @@ type ArgPropType = keyof PlasmicFooter__ArgsType;
 export const PlasmicFooter__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicFooter__OverridesType = {
-  root?: p.Flex<"div">;
-  columns?: p.Flex<"div">;
-  link?: p.Flex<"a"> & Partial<LinkProps>;
+  root?: Flex__<"div">;
+  columns?: Flex__<"div">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
 };
 
 export interface DefaultFooterProps {
@@ -96,11 +119,11 @@ function PlasmicFooter__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = ph.useDataEnv?.() || {};
+  const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = p.useCurrentUser?.() || {};
+  const currentUser = useCurrentUser?.() || {};
 
   const globalVariants = ensureGlobalVariants({
     mobile: useScreenVariantsvUzx0AI3UQDj()
@@ -121,12 +144,12 @@ function PlasmicFooter__RenderFunc(props: {
         sty.root
       )}
     >
-      <p.Stack
+      <Stack__
         as={"div"}
         hasGap={true}
         className={classNames(projectcss.all, sty.freeBox__aCwkn)}
       >
-        <p.Stack
+        <Stack__
           as={"div"}
           data-plasmic-name={"columns"}
           data-plasmic-override={overrides.columns}
@@ -134,12 +157,12 @@ function PlasmicFooter__RenderFunc(props: {
           className={classNames(projectcss.all, sty.columns)}
         >
           <div className={classNames(projectcss.all, sty.column___3Ehy0)}>
-            <p.Stack
+            <Stack__
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__tiMvv)}
             >
-              <p.Stack
+              <Stack__
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox___05DWn)}
@@ -162,11 +185,11 @@ function PlasmicFooter__RenderFunc(props: {
                 >
                   {"Invest in Your Future with Confidence"}
                 </div>
-              </p.Stack>
-            </p.Stack>
+              </Stack__>
+            </Stack__>
           </div>
           <div className={classNames(projectcss.all, sty.column__jaixM)}>
-            <p.Stack
+            <Stack__
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__hkCcp)}
@@ -209,7 +232,7 @@ function PlasmicFooter__RenderFunc(props: {
                   {"Home"}
                 </div>
               </Button>
-              <p.PlasmicLink
+              <PlasmicLink__
                 data-plasmic-name={"link"}
                 data-plasmic-override={overrides.link}
                 className={classNames(projectcss.all, projectcss.a, sty.link)}
@@ -244,11 +267,11 @@ function PlasmicFooter__RenderFunc(props: {
                     {"About"}
                   </div>
                 </Button>
-              </p.PlasmicLink>
-            </p.Stack>
+              </PlasmicLink__>
+            </Stack__>
           </div>
           <div className={classNames(projectcss.all, sty.column__rsbrj)}>
-            <p.Stack
+            <Stack__
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__spZ5D)}
@@ -320,10 +343,9 @@ function PlasmicFooter__RenderFunc(props: {
                   {"Plans"}
                 </div>
               </Button>
-            </p.Stack>
+            </Stack__>
           </div>
-         
-        </p.Stack>
+        </Stack__>
         <div
           className={classNames(
             projectcss.all,
@@ -333,7 +355,7 @@ function PlasmicFooter__RenderFunc(props: {
         >
           {"Copyright \u00a9 2023 Zig Trade Option."}
         </div>
-      </p.Stack>
+      </Stack__>
     </div>
   ) as React.ReactElement | null;
 }
@@ -345,7 +367,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  typeof PlasmicDescendants[T][number];
+  (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
   columns: "div";
@@ -386,7 +408,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicFooter__ArgProps,
           internalVariantPropNames: PlasmicFooter__VariantProps
         }),

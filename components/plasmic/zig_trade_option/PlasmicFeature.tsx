@@ -19,25 +19,47 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-import * as p from "@plasmicapp/react-web";
-import * as ph from "@plasmicapp/host";
-
 import {
-  hasVariant,
-  classNames,
-  wrapWithClassName,
-  createPlasmicElementProxy,
-  makeFragment,
+  Flex as Flex__,
   MultiChoiceArg,
+  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
+  PlasmicIcon as PlasmicIcon__,
+  PlasmicImg as PlasmicImg__,
+  PlasmicLink as PlasmicLink__,
+  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  pick,
-  omit,
-  useTrigger,
+  Stack as Stack__,
   StrictProps,
+  Trans as Trans__,
+  classNames,
+  createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
+  generateOnMutateForSpec,
+  generateStateOnChangeProp,
+  generateStateOnChangePropForCodeComponents,
+  generateStateValueProp,
+  get as $stateGet,
+  hasVariant,
+  initializeCodeComponentStates,
+  initializePlasmicStates,
+  makeFragment,
+  omit,
+  pick,
+  renderPlasmicSlot,
+  set as $stateSet,
+  useCurrentUser,
+  useDollarState,
+  usePlasmicTranslator,
+  useTrigger,
+  wrapWithClassName
 } from "@plasmicapp/react-web";
+import {
+  DataCtxReader as DataCtxReader__,
+  useDataEnv,
+  useGlobalActions
+} from "@plasmicapp/host";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -66,7 +88,7 @@ export const PlasmicFeature__ArgProps = new Array<ArgPropType>(
 );
 
 export type PlasmicFeature__OverridesType = {
-  root?: p.Flex<"div">;
+  root?: Flex__<"div">;
 };
 
 export interface DefaultFeatureProps {
@@ -101,14 +123,14 @@ function PlasmicFeature__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = ph.useDataEnv?.() || {};
+  const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = p.useCurrentUser?.() || {};
+  const currentUser = useCurrentUser?.() || {};
 
   return (
-    <p.Stack
+    <Stack__
       as={"div"}
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
@@ -124,7 +146,7 @@ function PlasmicFeature__RenderFunc(props: {
         sty.root
       )}
     >
-      {p.renderPlasmicSlot({
+      {renderPlasmicSlot({
         defaultContents: (
           <Icon2Icon
             className={classNames(projectcss.all, sty.svg__anLtC)}
@@ -136,7 +158,7 @@ function PlasmicFeature__RenderFunc(props: {
       })}
       <div className={classNames(projectcss.all, sty.freeBox__jsj6B)}>
         <div className={classNames(projectcss.all, sty.freeBox__vBtsd)}>
-          {p.renderPlasmicSlot({
+          {renderPlasmicSlot({
             defaultContents: "Expert Guidance",
             value: args.slot2,
             className: classNames(sty.slotTargetSlot2)
@@ -144,13 +166,13 @@ function PlasmicFeature__RenderFunc(props: {
         </div>
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__psPha)}>
-        {p.renderPlasmicSlot({
+        {renderPlasmicSlot({
           defaultContents:
             "Our seasoned financial advisors provide personalized guidance, ensuring your investment choices align with your goals.",
           value: args.slot
         })}
       </div>
-    </p.Stack>
+    </Stack__>
   ) as React.ReactElement | null;
 }
 
@@ -159,7 +181,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  typeof PlasmicDescendants[T][number];
+  (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
 };
@@ -198,7 +220,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicFeature__ArgProps,
           internalVariantPropNames: PlasmicFeature__VariantProps
         }),

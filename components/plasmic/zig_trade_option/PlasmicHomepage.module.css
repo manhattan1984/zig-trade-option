@@ -245,13 +245,13 @@
 .svg___3WvS {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
 }
 .svg__byzjE {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
 }
 .button__zdC0Z:global(.__wab_instance) {
@@ -268,13 +268,13 @@
 .svg__lLnH {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
 }
 .svg___6SSi {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
 }
 .freeBox__sHxuT {
@@ -305,9 +305,6 @@
   max-width: 100%;
 }
 .img__oZmCp > picture > img {
-  object-fit: cover;
-}
-.img__oZmCp > :global(.__wab_img-spacer) > img {
   object-fit: cover;
 }
 .section__b1BkJ {
@@ -1076,13 +1073,13 @@
 .svg__v05Aq {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
 }
 .svg__q0BHl {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
 }
 .freeBox__sjhap {
@@ -1105,9 +1102,6 @@
   max-width: 100%;
 }
 .img__xEuhl > picture > img {
-  object-fit: cover;
-}
-.img__xEuhl > :global(.__wab_img-spacer) > img {
   object-fit: cover;
 }
 .section__dSxq9 {
@@ -1218,10 +1212,6 @@
   object-fit: cover;
   object-position: 50% 10%;
 }
-.img__iw7MT > :global(.__wab_img-spacer) > img {
-  object-fit: cover;
-  object-position: 50% 10%;
-}
 .testimonial__a9N30:global(.__wab_instance) {
   position: relative;
 }
@@ -1238,10 +1228,6 @@
   object-fit: cover;
   object-position: 50% 10%;
 }
-.img__fHu9 > :global(.__wab_img-spacer) > img {
-  object-fit: cover;
-  object-position: 50% 10%;
-}
 .testimonial__uy5Ri:global(.__wab_instance) {
   position: relative;
 }
@@ -1255,10 +1241,6 @@
   border-radius: 100%;
 }
 .img__kxxNk > picture > img {
-  object-fit: cover;
-  object-position: 50% 50%;
-}
-.img__kxxNk > :global(.__wab_img-spacer) > img {
   object-fit: cover;
   object-position: 50% 50%;
 }
@@ -1345,9 +1327,6 @@
 .img__fscCa > picture > img {
   object-fit: cover;
 }
-.img__fscCa > :global(.__wab_img-spacer) > img {
-  object-fit: cover;
-}
 .freeBox__zsz5D {
   display: flex;
   position: relative;
@@ -1404,12 +1383,12 @@
 .svg__d1B46 {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
 }
 .svg__fyJF {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
 }

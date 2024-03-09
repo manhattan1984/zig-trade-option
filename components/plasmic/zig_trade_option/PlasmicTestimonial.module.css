@@ -83,10 +83,6 @@
   object-fit: cover;
   object-position: 50% 10%;
 }
-.img__vt3X1 > :global(.__wab_img-spacer) > img {
-  object-fit: cover;
-  object-position: 50% 10%;
-}
 .freeBox___0AjnP {
   display: flex;
   position: relative;

@@ -19,25 +19,48 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-import * as p from "@plasmicapp/react-web";
-import * as ph from "@plasmicapp/host";
-
 import {
-  hasVariant,
-  classNames,
-  wrapWithClassName,
-  createPlasmicElementProxy,
-  makeFragment,
+  Flex as Flex__,
   MultiChoiceArg,
+  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
+  PlasmicIcon as PlasmicIcon__,
+  PlasmicImg as PlasmicImg__,
+  PlasmicLink as PlasmicLink__,
+  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  pick,
-  omit,
-  useTrigger,
+  Stack as Stack__,
   StrictProps,
+  Trans as Trans__,
+  classNames,
+  createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
+  generateOnMutateForSpec,
+  generateStateOnChangeProp,
+  generateStateOnChangePropForCodeComponents,
+  generateStateValueProp,
+  get as $stateGet,
+  hasVariant,
+  initializeCodeComponentStates,
+  initializePlasmicStates,
+  makeFragment,
+  omit,
+  pick,
+  renderPlasmicSlot,
+  set as $stateSet,
+  useCurrentUser,
+  useDollarState,
+  usePlasmicTranslator,
+  useTrigger,
+  wrapWithClassName
 } from "@plasmicapp/react-web";
+import {
+  DataCtxReader as DataCtxReader__,
+  useDataEnv,
+  useGlobalActions
+} from "@plasmicapp/host";
+
 import Contact from "../../Contact"; // plasmic-import: Zv0E8bU47CEO/component
 
 import { useScreenVariants as useScreenVariantsvUzx0AI3UQDj } from "./PlasmicGlobalVariant__Mobile"; // plasmic-import: vUZX0aI3uQDj/globalVariant
@@ -48,7 +71,6 @@ import projectcss from "./plasmic_zig_trade_option.module.css"; // plasmic-impor
 import sty from "./PlasmicContactPage.module.css"; // plasmic-import: 9yuUnr0b4iU7/css
 
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: PkgiQ06t6T3P/icon
-import Icon13Icon from "./icons/PlasmicIcon__Icon13"; // plasmic-import: LMp0JIORsKXg/icon
 
 createPlasmicElementProxy;
 
@@ -62,9 +84,10 @@ type ArgPropType = keyof PlasmicContactPage__ArgsType;
 export const PlasmicContactPage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicContactPage__OverridesType = {
-  root?: p.Flex<"div">;
-  section?: p.Flex<"section">;
-  svg?: p.Flex<"svg">;
+  root?: Flex__<"div">;
+  section?: Flex__<"section">;
+  contact?: Flex__<typeof Contact>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
 };
 
 export interface DefaultContactPageProps {}
@@ -94,11 +117,11 @@ function PlasmicContactPage__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = ph.useDataEnv?.() || {};
+  const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = p.useCurrentUser?.() || {};
+  const currentUser = useCurrentUser?.() || {};
 
   const globalVariants = ensureGlobalVariants({
     mobile: useScreenVariantsvUzx0AI3UQDj()
@@ -166,31 +189,35 @@ function PlasmicContactPage__RenderFunc(props: {
               >
                 {"Let us  know how we can help."}
               </div>
-              <p.Stack
+              <Stack__
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox__qJW)}
               >
                 <Contact
-                  className={classNames("__wab_instance", sty.contact__jLvqZ)}
+                  data-plasmic-name={"contact"}
+                  data-plasmic-override={overrides.contact}
+                  className={classNames("__wab_instance", sty.contact)}
                   slot2={
-                    <p.PlasmicLink
+                    <PlasmicLink__
+                      data-plasmic-name={"link"}
+                      data-plasmic-override={overrides.link}
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
                         projectcss.__wab_text,
-                        sty.link__ssmoG
+                        sty.link
                       )}
                       component={Link}
                       href={"mailto:support@aquamining.com"}
                       platform={"nextjs"}
                     >
                       {"support@zigtradeoption.com"}
-                    </p.PlasmicLink>
+                    </PlasmicLink__>
                   }
                   slot3={"Email Us"}
                 />
-              </p.Stack>
+              </Stack__>
             </div>
           </section>
         </div>
@@ -200,17 +227,19 @@ function PlasmicContactPage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "svg"],
-  section: ["section", "svg"],
-  svg: ["svg"]
+  root: ["root", "section", "contact", "link"],
+  section: ["section", "contact", "link"],
+  contact: ["contact", "link"],
+  link: ["link"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  typeof PlasmicDescendants[T][number];
+  (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
   section: "section";
-  svg: "svg";
+  contact: typeof Contact;
+  link: "a";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -247,7 +276,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicContactPage__ArgProps,
           internalVariantPropNames: PlasmicContactPage__VariantProps
         }),
@@ -274,7 +303,8 @@ export const PlasmicContactPage = Object.assign(
   {
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
-    svg: makeNodeComponent("svg"),
+    contact: makeNodeComponent("contact"),
+    link: makeNodeComponent("link"),
 
     // Metadata about props expected for PlasmicContactPage
     internalVariantProps: PlasmicContactPage__VariantProps,
