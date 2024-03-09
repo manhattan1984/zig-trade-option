@@ -19,8 +19,47 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
-import * as p from "@plasmicapp/react-web";
-import * as ph from "@plasmicapp/host";
+import {
+  Flex as Flex__,
+  MultiChoiceArg,
+  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
+  PlasmicIcon as PlasmicIcon__,
+  PlasmicImg as PlasmicImg__,
+  PlasmicLink as PlasmicLink__,
+  PlasmicPageGuard as PlasmicPageGuard__,
+  SingleBooleanChoiceArg,
+  SingleChoiceArg,
+  Stack as Stack__,
+  StrictProps,
+  Trans as Trans__,
+  classNames,
+  createPlasmicElementProxy,
+  deriveRenderOpts,
+  ensureGlobalVariants,
+  generateOnMutateForSpec,
+  generateStateOnChangeProp,
+  generateStateOnChangePropForCodeComponents,
+  generateStateValueProp,
+  get as $stateGet,
+  hasVariant,
+  initializeCodeComponentStates,
+  initializePlasmicStates,
+  makeFragment,
+  omit,
+  pick,
+  renderPlasmicSlot,
+  set as $stateSet,
+  useCurrentUser,
+  useDollarState,
+  usePlasmicTranslator,
+  useTrigger,
+  wrapWithClassName
+} from "@plasmicapp/react-web";
+import {
+  DataCtxReader as DataCtxReader__,
+  useDataEnv,
+  useGlobalActions
+} from "@plasmicapp/host";
 
 import {
   executePlasmicDataOp,
@@ -28,25 +67,9 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
-import {
-  hasVariant,
-  classNames,
-  wrapWithClassName,
-  createPlasmicElementProxy,
-  makeFragment,
-  MultiChoiceArg,
-  SingleBooleanChoiceArg,
-  SingleChoiceArg,
-  pick,
-  omit,
-  useTrigger,
-  StrictProps,
-  deriveRenderOpts,
-  ensureGlobalVariants
-} from "@plasmicapp/react-web";
 import Plan from "../../Plan"; // plasmic-import: yEDPmqyaopQM/component
 import Button from "../../Button"; // plasmic-import: O1n4fOqLki7Y/component
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources"; // plasmic-import: pWcS6TFHnoYn/codeComponent
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -68,10 +91,10 @@ type ArgPropType = keyof PlasmicPlansPage__ArgsType;
 export const PlasmicPlansPage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicPlansPage__OverridesType = {
-  root?: p.Flex<"div">;
-  section?: p.Flex<"section">;
-  plan?: p.Flex<typeof Plan>;
-  button?: p.Flex<typeof Button>;
+  root?: Flex__<"div">;
+  section?: Flex__<"section">;
+  plan?: Flex__<typeof Plan>;
+  button?: Flex__<typeof Button>;
 };
 
 export interface DefaultPlansPageProps {
@@ -103,23 +126,23 @@ function PlasmicPlansPage__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = ph.useDataEnv?.() || {};
+  const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = p.useCurrentUser?.() || {};
+  const currentUser = useCurrentUser?.() || {};
 
-  const [$queries, setDollarQueries] = React.useState<
+  let [$queries, setDollarQueries] = React.useState<
     Record<string, ReturnType<typeof usePlasmicDataOp>>
   >({});
 
   const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
     getPlans: usePlasmicDataOp(() => {
       return {
-        sourceId: "9ugCe6fXMRsvxqYpsu4GP9",
-        opId: "836cede8-fd7f-4b13-b858-f1bcdcd320e2",
+        sourceId: "fEyKMjNazynTXmk5LH5guG",
+        opId: "766e3058-e5df-4881-b072-c48c35619999",
         userArgs: {},
-        cacheKey: `plasmic.$.836cede8-fd7f-4b13-b858-f1bcdcd320e2`,
+        cacheKey: `plasmic.$.766e3058-e5df-4881-b072-c48c35619999.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -127,6 +150,8 @@ function PlasmicPlansPage__RenderFunc(props: {
   };
   if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
     setDollarQueries(new$Queries);
+
+    $queries = new$Queries;
   }
 
   return (
@@ -325,7 +350,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  typeof PlasmicDescendants[T][number];
+  (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
   section: "section";
@@ -367,7 +392,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicPlansPage__ArgProps,
           internalVariantPropNames: PlasmicPlansPage__VariantProps
         }),

@@ -271,9 +271,8 @@
 .svg___9Biy {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
-  flex-shrink: 0;
 }
 .contentContainer {
   display: flex;
@@ -531,7 +530,6 @@
 .svg__lY99T {
   position: relative;
   object-fit: cover;
-  width: 1em;
+  width: auto;
   height: 1em;
-  flex-shrink: 0;
 }
