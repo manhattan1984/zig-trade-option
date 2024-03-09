@@ -19,47 +19,25 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
+import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
+
 import {
-  Flex as Flex__,
+  hasVariant,
+  classNames,
+  wrapWithClassName,
+  createPlasmicElementProxy,
+  makeFragment,
   MultiChoiceArg,
-  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
-  PlasmicIcon as PlasmicIcon__,
-  PlasmicImg as PlasmicImg__,
-  PlasmicLink as PlasmicLink__,
-  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  Stack as Stack__,
-  StrictProps,
-  Trans as Trans__,
-  classNames,
-  createPlasmicElementProxy,
-  deriveRenderOpts,
-  ensureGlobalVariants,
-  generateOnMutateForSpec,
-  generateStateOnChangeProp,
-  generateStateOnChangePropForCodeComponents,
-  generateStateValueProp,
-  get as $stateGet,
-  hasVariant,
-  initializeCodeComponentStates,
-  initializePlasmicStates,
-  makeFragment,
-  omit,
   pick,
-  renderPlasmicSlot,
-  set as $stateSet,
-  useCurrentUser,
-  useDollarState,
-  usePlasmicTranslator,
+  omit,
   useTrigger,
-  wrapWithClassName
+  StrictProps,
+  deriveRenderOpts,
+  ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import {
-  DataCtxReader as DataCtxReader__,
-  useDataEnv,
-  useGlobalActions
-} from "@plasmicapp/host";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -90,7 +68,7 @@ export const PlasmicContact__ArgProps = new Array<ArgPropType>(
 );
 
 export type PlasmicContact__OverridesType = {
-  root?: Flex__<"div">;
+  root?: p.Flex<"div">;
 };
 
 export interface DefaultContactProps {
@@ -126,11 +104,11 @@ function PlasmicContact__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = useDataEnv?.() || {};
+  const $ctx = ph.useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
+  const currentUser = p.useCurrentUser?.() || {};
 
   return (
     <div
@@ -147,7 +125,7 @@ function PlasmicContact__RenderFunc(props: {
         sty.root
       )}
     >
-      {renderPlasmicSlot({
+      {p.renderPlasmicSlot({
         defaultContents: (
           <Icon12Icon
             className={classNames(projectcss.all, sty.svg__hBzLs)}
@@ -159,7 +137,7 @@ function PlasmicContact__RenderFunc(props: {
       })}
       <div className={classNames(projectcss.all, sty.freeBox__m0SZo)}>
         <div className={classNames(projectcss.all, sty.freeBox___8Sh7)}>
-          {renderPlasmicSlot({
+          {p.renderPlasmicSlot({
             defaultContents: "Call Us",
             value: args.slot3,
             className: classNames(sty.slotTargetSlot3)
@@ -167,15 +145,15 @@ function PlasmicContact__RenderFunc(props: {
         </div>
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__wXcJh)}>
-        {renderPlasmicSlot({
+        {p.renderPlasmicSlot({
           defaultContents: "We are here to help.",
           value: args.slot
         })}
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__e4FrK)}>
-        {renderPlasmicSlot({
+        {p.renderPlasmicSlot({
           defaultContents: (
-            <PlasmicLink__
+            <p.PlasmicLink
               className={classNames(
                 projectcss.all,
                 projectcss.a,
@@ -187,7 +165,7 @@ function PlasmicContact__RenderFunc(props: {
               platform={"nextjs"}
             >
               {"support@aqualightoption.com"}
-            </PlasmicLink__>
+            </p.PlasmicLink>
           ),
           value: args.slot2
         })}
@@ -201,7 +179,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  (typeof PlasmicDescendants)[T][number];
+  typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
 };
@@ -240,7 +218,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: PlasmicDescendants[nodeName],
+          descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicContact__ArgProps,
           internalVariantPropNames: PlasmicContact__VariantProps
         }),

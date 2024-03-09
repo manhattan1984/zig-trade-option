@@ -19,50 +19,27 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
+import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
+
 import {
-  Flex as Flex__,
+  hasVariant,
+  classNames,
+  wrapWithClassName,
+  createPlasmicElementProxy,
+  makeFragment,
   MultiChoiceArg,
-  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
-  PlasmicIcon as PlasmicIcon__,
-  PlasmicImg as PlasmicImg__,
-  PlasmicLink as PlasmicLink__,
-  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  Stack as Stack__,
-  StrictProps,
-  Trans as Trans__,
-  classNames,
-  createPlasmicElementProxy,
-  deriveRenderOpts,
-  ensureGlobalVariants,
-  generateOnMutateForSpec,
-  generateStateOnChangeProp,
-  generateStateOnChangePropForCodeComponents,
-  generateStateValueProp,
-  get as $stateGet,
-  hasVariant,
-  initializeCodeComponentStates,
-  initializePlasmicStates,
-  makeFragment,
-  omit,
   pick,
-  renderPlasmicSlot,
-  set as $stateSet,
-  useCurrentUser,
-  useDollarState,
-  usePlasmicTranslator,
+  omit,
   useTrigger,
-  wrapWithClassName
+  StrictProps,
+  deriveRenderOpts,
+  ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import {
-  DataCtxReader as DataCtxReader__,
-  useDataEnv,
-  useGlobalActions
-} from "@plasmicapp/host";
-
 import Button from "../../Button"; // plasmic-import: O1n4fOqLki7Y/component
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources"; // plasmic-import: pWcS6TFHnoYn/codeComponent
 
 import { useScreenVariants as useScreenVariantsvUzx0AI3UQDj } from "./PlasmicGlobalVariant__Mobile"; // plasmic-import: vUZX0aI3uQDj/globalVariant
 
@@ -103,8 +80,8 @@ export const PlasmicHeader__ArgProps = new Array<ArgPropType>(
 );
 
 export type PlasmicHeader__OverridesType = {
-  root?: Flex__<"div">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
+  root?: p.Flex<"div">;
+  link?: p.Flex<"a"> & Partial<LinkProps>;
 };
 
 export interface DefaultHeaderProps {
@@ -149,13 +126,13 @@ function PlasmicHeader__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = useDataEnv?.() || {};
+  const $ctx = ph.useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
+  const currentUser = p.useCurrentUser?.() || {};
 
-  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+  const stateSpecs: Parameters<typeof p.useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "showMenu",
@@ -178,7 +155,7 @@ function PlasmicHeader__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
-  const $state = useDollarState(stateSpecs, {
+  const $state = p.useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
@@ -217,19 +194,11 @@ function PlasmicHeader__RenderFunc(props: {
             $state,
             "menuOpen",
             "menuOpen"
-          ),
-          [sty.freeBoxmenuOpen_signedIn__hcmZyFhgljTe2Hr]:
-            hasVariant($state, "signedIn", "signedIn") &&
-            hasVariant($state, "menuOpen", "menuOpen")
+          )
         })}
       >
         <div
           className={classNames(projectcss.all, sty.freeBox__zQqIc, {
-            [sty.freeBoxmenuOpen__zQqIcFhglj]: hasVariant(
-              $state,
-              "menuOpen",
-              "menuOpen"
-            ),
             [sty.freeBoxmenuOpen_signedIn__zQqIcFhgljTe2Hr]:
               hasVariant($state, "signedIn", "signedIn") &&
               hasVariant($state, "menuOpen", "menuOpen"),
@@ -240,22 +209,21 @@ function PlasmicHeader__RenderFunc(props: {
             )
           })}
         >
-          <PlasmicLink__
+          <p.PlasmicLink
             data-plasmic-name={"link"}
             data-plasmic-override={overrides.link}
             className={classNames(
               projectcss.all,
               projectcss.a,
               projectcss.__wab_text,
-              sty.link,
-              { [sty.linkmenuOpen]: hasVariant($state, "menuOpen", "menuOpen") }
+              sty.link
             )}
             component={Link}
             href={`/`}
             platform={"nextjs"}
           >
             {"Zig Trade Option"}
-          </PlasmicLink__>
+          </p.PlasmicLink>
           <div
             className={classNames(projectcss.all, sty.freeBox__wAdaC, {
               [sty.freeBoxmenuOpen__wAdaCFhglj]: hasVariant(
@@ -266,10 +234,7 @@ function PlasmicHeader__RenderFunc(props: {
             })}
           >
             {(
-              hasVariant($state, "menuOpen", "menuOpen") &&
               hasVariant(globalVariants, "mobile", "mobileOnly")
-                ? true
-                : hasVariant(globalVariants, "mobile", "mobileOnly")
                 ? (() => {
                     try {
                       return !$state.showMenu;
@@ -286,42 +251,43 @@ function PlasmicHeader__RenderFunc(props: {
                 : true
             ) ? (
               <Button
-                className={classNames("__wab_instance", sty.button__pxHdO, {
-                  [sty.buttonmenuOpen__pxHdOFhglj]: hasVariant(
-                    $state,
-                    "menuOpen",
-                    "menuOpen"
-                  )
-                })}
+                className={classNames("__wab_instance", sty.button__pxHdO)}
                 color={"white"}
                 ghost={true}
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["updateMenuOpen"] = true
+                  $steps["updateShowMenu"] = true
                     ? (() => {
                         const actionArgs = {
-                          vgroup: "menuOpen",
-                          operation: 2,
-                          value: "menuOpen"
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["showMenu"]
+                          },
+                          operation: 4
                         };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
                           }
+                          const { objRoot, variablePath } = variable;
 
-                          const oldValue = $stateGet($state, vgroup);
-                          $stateSet($state, vgroup, !oldValue);
+                          const oldValue = p.get(objRoot, variablePath);
+                          p.set(objRoot, variablePath, !oldValue);
                           return !oldValue;
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["updateMenuOpen"] != null &&
-                    typeof $steps["updateMenuOpen"] === "object" &&
-                    typeof $steps["updateMenuOpen"].then === "function"
+                    typeof $steps["updateShowMenu"] === "object" &&
+                    typeof $steps["updateShowMenu"].then === "function"
                   ) {
-                    $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
+                    $steps["updateShowMenu"] = await $steps["updateShowMenu"];
                   }
                 }}
               >
@@ -332,10 +298,7 @@ function PlasmicHeader__RenderFunc(props: {
               </Button>
             ) : null}
             {(
-              hasVariant($state, "menuOpen", "menuOpen") &&
               hasVariant(globalVariants, "mobile", "mobileOnly")
-                ? true
-                : hasVariant(globalVariants, "mobile", "mobileOnly")
                 ? (() => {
                     try {
                       return $state.showMenu;
@@ -352,42 +315,43 @@ function PlasmicHeader__RenderFunc(props: {
                 : true
             ) ? (
               <Button
-                className={classNames("__wab_instance", sty.button___8ORfw, {
-                  [sty.buttonmenuOpen___8ORfwFhglj]: hasVariant(
-                    $state,
-                    "menuOpen",
-                    "menuOpen"
-                  )
-                })}
+                className={classNames("__wab_instance", sty.button___8ORfw)}
                 color={"white"}
                 ghost={true}
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["updateMenuOpen"] = true
+                  $steps["updateShowMenu"] = true
                     ? (() => {
                         const actionArgs = {
-                          vgroup: "menuOpen",
-                          operation: 2,
-                          value: "menuOpen"
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["showMenu"]
+                          },
+                          operation: 4
                         };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
                           }
+                          const { objRoot, variablePath } = variable;
 
-                          const oldValue = $stateGet($state, vgroup);
-                          $stateSet($state, vgroup, !oldValue);
+                          const oldValue = p.get(objRoot, variablePath);
+                          p.set(objRoot, variablePath, !oldValue);
                           return !oldValue;
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["updateMenuOpen"] != null &&
-                    typeof $steps["updateMenuOpen"] === "object" &&
-                    typeof $steps["updateMenuOpen"].then === "function"
+                    typeof $steps["updateShowMenu"] === "object" &&
+                    typeof $steps["updateShowMenu"].then === "function"
                   ) {
-                    $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
+                    $steps["updateShowMenu"] = await $steps["updateShowMenu"];
                   }
                 }}
               >
@@ -405,13 +369,10 @@ function PlasmicHeader__RenderFunc(props: {
               $state,
               "menuOpen",
               "menuOpen"
-            ),
-            [sty.freeBoxmenuOpen_signedIn__u5SjVFhgljTe2Hr]:
-              hasVariant($state, "signedIn", "signedIn") &&
-              hasVariant($state, "menuOpen", "menuOpen")
+            )
           })}
         >
-          <Stack__
+          <p.Stack
             as={"div"}
             hasGap={true}
             className={classNames(projectcss.all, sty.freeBox__ojjIn, {
@@ -499,8 +460,8 @@ function PlasmicHeader__RenderFunc(props: {
                 {"About"}
               </div>
             </Button>
-          </Stack__>
-          <Stack__
+          </p.Stack>
+          <p.Stack
             as={"div"}
             hasGap={true}
             className={classNames(projectcss.all, sty.freeBox__fNeuH, {
@@ -575,8 +536,8 @@ function PlasmicHeader__RenderFunc(props: {
                   : "Sign Up"}
               </div>
             </Button>
-          </Stack__>
-          <Stack__
+          </p.Stack>
+          <p.Stack
             as={"div"}
             hasGap={true}
             className={classNames(projectcss.all, sty.freeBox__bJi0L, {
@@ -651,7 +612,7 @@ function PlasmicHeader__RenderFunc(props: {
                   : "Sign Out"}
               </div>
             </Button>
-          </Stack__>
+          </p.Stack>
         </div>
       </div>
     </div>
@@ -664,7 +625,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  (typeof PlasmicDescendants)[T][number];
+  typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
   link: "a";
@@ -704,7 +665,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: PlasmicDescendants[nodeName],
+          descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicHeader__ArgProps,
           internalVariantPropNames: PlasmicHeader__VariantProps
         }),

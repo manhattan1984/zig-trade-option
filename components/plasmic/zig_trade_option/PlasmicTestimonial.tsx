@@ -19,47 +19,25 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
+import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
+
 import {
-  Flex as Flex__,
+  hasVariant,
+  classNames,
+  wrapWithClassName,
+  createPlasmicElementProxy,
+  makeFragment,
   MultiChoiceArg,
-  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
-  PlasmicIcon as PlasmicIcon__,
-  PlasmicImg as PlasmicImg__,
-  PlasmicLink as PlasmicLink__,
-  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  Stack as Stack__,
-  StrictProps,
-  Trans as Trans__,
-  classNames,
-  createPlasmicElementProxy,
-  deriveRenderOpts,
-  ensureGlobalVariants,
-  generateOnMutateForSpec,
-  generateStateOnChangeProp,
-  generateStateOnChangePropForCodeComponents,
-  generateStateValueProp,
-  get as $stateGet,
-  hasVariant,
-  initializeCodeComponentStates,
-  initializePlasmicStates,
-  makeFragment,
-  omit,
   pick,
-  renderPlasmicSlot,
-  set as $stateSet,
-  useCurrentUser,
-  useDollarState,
-  usePlasmicTranslator,
+  omit,
   useTrigger,
-  wrapWithClassName
+  StrictProps,
+  deriveRenderOpts,
+  ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import {
-  DataCtxReader as DataCtxReader__,
-  useDataEnv,
-  useGlobalActions
-} from "@plasmicapp/host";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -88,8 +66,8 @@ export const PlasmicTestimonial__ArgProps = new Array<ArgPropType>(
 );
 
 export type PlasmicTestimonial__OverridesType = {
-  root?: Flex__<"div">;
-  text?: Flex__<"div">;
+  root?: p.Flex<"div">;
+  text?: p.Flex<"div">;
 };
 
 export interface DefaultTestimonialProps {
@@ -125,11 +103,11 @@ function PlasmicTestimonial__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = useDataEnv?.() || {};
+  const $ctx = ph.useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
+  const currentUser = p.useCurrentUser?.() || {};
 
   return (
     <div
@@ -154,21 +132,21 @@ function PlasmicTestimonial__RenderFunc(props: {
         {'"'}
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__g1RA)}>
-        {renderPlasmicSlot({
+        {p.renderPlasmicSlot({
           defaultContents:
             "AquaLight Option has transformed the way I view investing. Their strategies have consistently delivered impressive results, giving me the confidence to secure my financial future.",
           value: args.children
         })}
       </div>
-      <Stack__
+      <p.Stack
         as={"div"}
         hasGap={true}
         className={classNames(projectcss.all, sty.freeBox__bcsR)}
       >
         <div className={classNames(projectcss.all, sty.freeBox__vIi)}>
-          {renderPlasmicSlot({
+          {p.renderPlasmicSlot({
             defaultContents: (
-              <PlasmicImg__
+              <p.PlasmicImg
                 alt={""}
                 className={classNames(sty.img__vt3X1)}
                 displayHeight={"30px"}
@@ -189,20 +167,20 @@ function PlasmicTestimonial__RenderFunc(props: {
         </div>
         <div className={classNames(projectcss.all, sty.freeBox___0AjnP)}>
           <div className={classNames(projectcss.all, sty.freeBox__fRTfE)}>
-            {renderPlasmicSlot({
+            {p.renderPlasmicSlot({
               defaultContents: "Rachael M.",
               value: args.slot2
             })}
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__hyWfo)}>
-            {renderPlasmicSlot({
+            {p.renderPlasmicSlot({
               defaultContents: "Entrepreneur",
               value: args.slot3,
               className: classNames(sty.slotTargetSlot3)
             })}
           </div>
         </div>
-      </Stack__>
+      </p.Stack>
     </div>
   ) as React.ReactElement | null;
 }
@@ -213,7 +191,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  (typeof PlasmicDescendants)[T][number];
+  typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
   text: "div";
@@ -253,7 +231,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: PlasmicDescendants[nodeName],
+          descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicTestimonial__ArgProps,
           internalVariantPropNames: PlasmicTestimonial__VariantProps
         }),

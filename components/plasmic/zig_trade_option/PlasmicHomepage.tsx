@@ -19,48 +19,25 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 
+import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
+
 import {
-  Flex as Flex__,
+  hasVariant,
+  classNames,
+  wrapWithClassName,
+  createPlasmicElementProxy,
+  makeFragment,
   MultiChoiceArg,
-  PlasmicDataSourceContextProvider as PlasmicDataSourceContextProvider__,
-  PlasmicIcon as PlasmicIcon__,
-  PlasmicImg as PlasmicImg__,
-  PlasmicLink as PlasmicLink__,
-  PlasmicPageGuard as PlasmicPageGuard__,
   SingleBooleanChoiceArg,
   SingleChoiceArg,
-  Stack as Stack__,
-  StrictProps,
-  Trans as Trans__,
-  classNames,
-  createPlasmicElementProxy,
-  deriveRenderOpts,
-  ensureGlobalVariants,
-  generateOnMutateForSpec,
-  generateStateOnChangeProp,
-  generateStateOnChangePropForCodeComponents,
-  generateStateValueProp,
-  get as $stateGet,
-  hasVariant,
-  initializeCodeComponentStates,
-  initializePlasmicStates,
-  makeFragment,
-  omit,
   pick,
-  renderPlasmicSlot,
-  set as $stateSet,
-  useCurrentUser,
-  useDollarState,
-  usePlasmicTranslator,
+  omit,
   useTrigger,
-  wrapWithClassName
+  StrictProps,
+  deriveRenderOpts,
+  ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import {
-  DataCtxReader as DataCtxReader__,
-  useDataEnv,
-  useGlobalActions
-} from "@plasmicapp/host";
-
 import Button from "../../Button"; // plasmic-import: O1n4fOqLki7Y/component
 import MetricItem from "../../MetricItem"; // plasmic-import: B5OJ7qr5HdQi/component
 import Feature from "../../Feature"; // plasmic-import: N8GF-mSkeZPv/component
@@ -92,9 +69,9 @@ type ArgPropType = keyof PlasmicHomepage__ArgsType;
 export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomepage__OverridesType = {
-  root?: Flex__<"div">;
-  plansPage?: Flex__<typeof PlansPage>;
-  link?: Flex__<"a"> & Partial<LinkProps>;
+  root?: p.Flex<"div">;
+  plansPage?: p.Flex<typeof PlansPage>;
+  link?: p.Flex<"a"> & Partial<LinkProps>;
 };
 
 export interface DefaultHomepageProps {}
@@ -124,11 +101,11 @@ function PlasmicHomepage__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
-  const $ctx = useDataEnv?.() || {};
+  const $ctx = ph.useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
+  const currentUser = p.useCurrentUser?.() || {};
 
   const globalVariants = ensureGlobalVariants({
     mobile: useScreenVariantsvUzx0AI3UQDj()
@@ -187,7 +164,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   </div>
                 </div>
               </div>
-              <Stack__
+              <p.Stack
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox___8JoGj)}
@@ -203,7 +180,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "Discover endless possibilities for your financial growth with Zig Trade Option. We specialize in guiding you towards intelligent investment choices that illuminate your path to prosperity. With our expert insights and innovative strategies, your financial dreams are within reach."
                   }
                 </div>
-                <Stack__
+                <p.Stack
                   as={"div"}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox___1KRvE)}
@@ -223,11 +200,11 @@ function PlasmicHomepage__RenderFunc(props: {
                   >
                     {"Learn More"}
                   </Button>
-                </Stack__>
-              </Stack__>
+                </p.Stack>
+              </p.Stack>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__sHxuT)}>
-              <PlasmicImg__
+              <p.PlasmicImg
                 alt={""}
                 className={classNames(sty.img__oZmCp)}
                 displayHeight={"auto"}
@@ -256,7 +233,7 @@ function PlasmicHomepage__RenderFunc(props: {
             >
               {"Featured In"}
             </div>
-            <Stack__
+            <p.Stack
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__iA4Ra)}
@@ -288,10 +265,10 @@ function PlasmicHomepage__RenderFunc(props: {
               >
                 {"Bloomberg"}
               </div>
-            </Stack__>
+            </p.Stack>
           </section>
           <section className={classNames(projectcss.all, sty.section__qhr7Y)}>
-            <Stack__
+            <p.Stack
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__cnzBo)}
@@ -305,7 +282,7 @@ function PlasmicHomepage__RenderFunc(props: {
               >
                 {"Trusted by Numbers"}
               </div>
-              <Stack__
+              <p.Stack
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox__hRmSh)}
@@ -321,7 +298,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "At Zig Trade Option, our results speak volumes. We are dedicated to delivering exceptional outcomes for our clients, backed by solid performance metrics:"
                   }
                 </div>
-                <Stack__
+                <p.Stack
                   as={"div"}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox__xhP7N)}
@@ -397,12 +374,12 @@ function PlasmicHomepage__RenderFunc(props: {
                       </React.Fragment>
                     </div>
                   </MetricItem>
-                </Stack__>
-              </Stack__>
-            </Stack__>
+                </p.Stack>
+              </p.Stack>
+            </p.Stack>
           </section>
           <section className={classNames(projectcss.all, sty.section__hd1Bv)}>
-            <Stack__
+            <p.Stack
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__t9Uog)}
@@ -439,7 +416,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   role={"img"}
                 />
               </Feature>
-            </Stack__>
+            </p.Stack>
           </section>
           <section
             className={classNames(projectcss.all, sty.section__quB2H)}
@@ -455,17 +432,17 @@ function PlasmicHomepage__RenderFunc(props: {
             className={classNames(projectcss.all, sty.section__ejkZl)}
             id={"about"}
           >
-            <Stack__
+            <p.Stack
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__jgsdq)}
             >
-              <Stack__
+              <p.Stack
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox___9Kb0Y)}
               >
-                <Stack__
+                <p.Stack
                   as={"div"}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox___2Yo8Z)}
@@ -490,17 +467,17 @@ function PlasmicHomepage__RenderFunc(props: {
                       "Get Access To Loan Up To $50,000 For Platinum Plan and premium plan."
                     }
                   </div>
-                </Stack__>
-              </Stack__>
-            </Stack__>
+                </p.Stack>
+              </p.Stack>
+            </p.Stack>
           </section>
           <section className={classNames(projectcss.all, sty.section___07Aj)}>
-            <Stack__
+            <p.Stack
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__seZB)}
             >
-              <Stack__
+              <p.Stack
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox__kQnZ)}
@@ -525,7 +502,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "Join the ever-growing community of satisfied investors who have chosen Zig Trade Option as their investment partner. "
                   }
                 </div>
-                <PlasmicLink__
+                <p.PlasmicLink
                   data-plasmic-name={"link"}
                   data-plasmic-override={overrides.link}
                   className={classNames(projectcss.all, projectcss.a, sty.link)}
@@ -539,10 +516,10 @@ function PlasmicHomepage__RenderFunc(props: {
                   >
                     {"Learn More"}
                   </Button>
-                </PlasmicLink__>
-              </Stack__>
+                </p.PlasmicLink>
+              </p.Stack>
               <div className={classNames(projectcss.all, sty.freeBox__sjhap)}>
-                <PlasmicImg__
+                <p.PlasmicImg
                   alt={""}
                   className={classNames(sty.img__xEuhl)}
                   displayHeight={"auto"}
@@ -560,7 +537,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   }}
                 />
               </div>
-            </Stack__>
+            </p.Stack>
           </section>
           <section className={classNames(projectcss.all, sty.section__dSxq9)}>
             <div
@@ -572,7 +549,7 @@ function PlasmicHomepage__RenderFunc(props: {
             >
               {"Testimonials"}
             </div>
-            <Stack__
+            <p.Stack
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox___2S22B)}
@@ -580,7 +557,7 @@ function PlasmicHomepage__RenderFunc(props: {
               <Testimonial
                 className={classNames("__wab_instance", sty.testimonial__wKwQ)}
                 slot={
-                  <PlasmicImg__
+                  <p.PlasmicImg
                     alt={""}
                     className={classNames(sty.img__iw7MT)}
                     displayHeight={"30px"}
@@ -612,7 +589,7 @@ function PlasmicHomepage__RenderFunc(props: {
               <Testimonial
                 className={classNames("__wab_instance", sty.testimonial__uy5Ri)}
                 slot={
-                  <PlasmicImg__
+                  <p.PlasmicImg
                     alt={""}
                     className={classNames(sty.img__kxxNk)}
                     displayHeight={"30px"}
@@ -632,16 +609,16 @@ function PlasmicHomepage__RenderFunc(props: {
                   "Zig Trade Option has transformed the way I view investing. Their strategies have consistently delivered impressive results, giving me the confidence to secure my financial future."
                 }
               </Testimonial>
-            </Stack__>
+            </p.Stack>
           </section>
           <section className={classNames(projectcss.all, sty.section__rzQaq)}>
-            <Stack__
+            <p.Stack
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox___6Hd8Y)}
             >
               <div className={classNames(projectcss.all, sty.freeBox__a0USz)}>
-                <PlasmicImg__
+                <p.PlasmicImg
                   alt={""}
                   className={classNames(sty.img__fscCa)}
                   displayHeight={"auto"}
@@ -659,7 +636,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   }}
                 />
               </div>
-              <Stack__
+              <p.Stack
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox__zsz5D)}
@@ -691,8 +668,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {"Get Started Today"}
                 </Button>
-              </Stack__>
-            </Stack__>
+              </p.Stack>
+            </p.Stack>
           </section>
         </div>
       </div>
@@ -707,7 +684,7 @@ const PlasmicDescendants = {
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
-  (typeof PlasmicDescendants)[T][number];
+  typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
   plansPage: typeof PlansPage;
@@ -748,7 +725,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: PlasmicDescendants[nodeName],
+          descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicHomepage__ArgProps,
           internalVariantPropNames: PlasmicHomepage__VariantProps
         }),

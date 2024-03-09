@@ -73,14 +73,17 @@
 .columns {
   --plsmc-rc-col-gap: 0px;
 }
-.columns > :global(.__wab_flex-container) > :nth-child(3n + 1) {
-  width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 4 / 12);
+.columns > :global(.__wab_flex-container) > :nth-child(4n + 1) {
+  width: calc((100% - 4 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
-.columns > :global(.__wab_flex-container) > :nth-child(3n + 2) {
-  width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 4 / 12);
+.columns > :global(.__wab_flex-container) > :nth-child(4n + 2) {
+  width: calc((100% - 4 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
-.columns > :global(.__wab_flex-container) > :nth-child(3n + 3) {
-  width: calc((100% - 3 * var(--plsmc-rc-col-gap, 0px)) * 4 / 12);
+.columns > :global(.__wab_flex-container) > :nth-child(4n + 3) {
+  width: calc((100% - 4 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
+}
+.columns > :global(.__wab_flex-container) > :nth-child(4n + 4) {
+  width: calc((100% - 4 * var(--plsmc-rc-col-gap, 0px)) * 3 / 12);
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .columns {
@@ -279,7 +282,7 @@
 .svg__qnvX4 {
   position: relative;
   object-fit: cover;
-  width: auto;
+  width: 1em;
   height: 1em;
 }
 .text__aknym {
@@ -306,7 +309,7 @@
 .svg___3DcPj {
   position: relative;
   object-fit: cover;
-  width: auto;
+  width: 1em;
   height: 1em;
 }
 .link {
@@ -316,7 +319,7 @@
 .svg__oh4Mg {
   position: relative;
   object-fit: cover;
-  width: auto;
+  width: 1em;
   height: 1em;
 }
 .text__jNt9S {
@@ -355,7 +358,7 @@
 .svg__vgJoj {
   position: relative;
   object-fit: cover;
-  width: auto;
+  width: 1em;
   height: 1em;
 }
 .column__rsbrj {
@@ -425,7 +428,7 @@
 .svg__w8Tjt {
   position: relative;
   object-fit: cover;
-  width: auto;
+  width: 1em;
   height: 1em;
 }
 .text__k9Eoi {
@@ -451,7 +454,7 @@
 .svg__haXyg {
   position: relative;
   object-fit: cover;
-  width: auto;
+  width: 1em;
   height: 1em;
 }
 .button__wsTcj:global(.__wab_instance) {
@@ -460,7 +463,7 @@
 .svg__zLuop {
   position: relative;
   object-fit: cover;
-  width: auto;
+  width: 1em;
   height: 1em;
 }
 .text__nsjl7 {
@@ -486,8 +489,72 @@
 .svg__vhv8N {
   position: relative;
   object-fit: cover;
-  width: auto;
+  width: 1em;
   height: 1em;
+}
+.column__px5Av {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 25%;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .column__px5Av {
+    width: 100%;
+  }
+}
+.freeBox___9OmvD {
+  display: flex;
+  position: relative;
+  width: 100%;
+  left: auto;
+  top: auto;
+  flex-direction: column;
+  min-width: 0;
+}
+.freeBox___9OmvD > :global(.__wab_flex-container) {
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  margin-top: calc(0px - 16px);
+  height: calc(100% + 16px);
+}
+.freeBox___9OmvD > :global(.__wab_flex-container) > *,
+.freeBox___9OmvD > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.freeBox___9OmvD > :global(.__wab_flex-container) > picture > img,
+.freeBox___9OmvD
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: 16px;
+}
+.text__w9Zq {
+  position: relative;
+  left: auto;
+  top: auto;
+  color: var(--token-gKBhMi_ROKEp);
+  height: auto;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  text-align: left;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+.text__tbqLi {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  color: var(--token-bsyV_OXF_NhW);
+  min-width: 0;
 }
 .text__unLbj {
   position: relative;

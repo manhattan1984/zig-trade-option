@@ -167,7 +167,34 @@
   width: 24px;
   height: 24px;
 }
-.link {
+.link__ssmoG {
+  color: var(--token-EPiKkH7ARKPs);
+  text-decoration-line: underline !important;
+  font-weight: 700;
+}
+.svg__xjTrz {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 24px;
+  height: 24px;
+}
+.text__hOhtg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 11px;
+  min-width: 0;
+}
+.svg {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 24px;
+  height: 24px;
+}
+.link__jAnAs {
   color: var(--token-EPiKkH7ARKPs);
   text-decoration-line: underline !important;
   font-weight: 700;

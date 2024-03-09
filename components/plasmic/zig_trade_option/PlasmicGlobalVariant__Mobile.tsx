@@ -6,7 +6,7 @@
 "use client";
 
 import * as React from "react";
-import { createUseScreenVariants } from "@plasmicapp/react-web";
+import * as p from "@plasmicapp/react-web";
 
 export type MobileValue = "mobileOnly";
 export const MobileContext = React.createContext<MobileValue[] | undefined>(
@@ -25,7 +25,7 @@ export function ScreenVariantProvider(props: React.PropsWithChildren) {
   return props.children;
 }
 
-export const useScreenVariants = createUseScreenVariants(true, {
+export const useScreenVariants = p.createUseScreenVariants(true, {
   mobileOnly: "(min-width:0px) and (max-width:768px)",
 });
 
